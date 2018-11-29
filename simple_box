@@ -1,7 +1,7 @@
 function int box(float scale){
-    /* points where centre of mass is origin
-    :param scale: the scale of the box in units
-    :return: True
+    /* creates a box where centre of mass is the origin.
+    \param scale float. the scale of the box in units.
+    \return True bool. success of box creation.
     */
     scale = scale/2;
     
