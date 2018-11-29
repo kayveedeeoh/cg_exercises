@@ -1,0 +1,37 @@
+function int box(float scale){
+    /* points where centre of mass is origin
+    :param scale: the scale of the box in units
+    :return: True
+    */
+    scale = scale/2;
+    
+    int p0 = addpoint(0, set(-scale, -scale, -scale));
+    int p1 = addpoint(0, set(scale, -scale, -scale)); 
+    int p2 = addpoint(0, set(scale, -scale, scale));
+    int p3 = addpoint(0, set(-scale, -scale, scale));
+    int p4 = addpoint(0, set(-scale, scale, -scale));
+    int p5 = addpoint(0, set(scale, scale, -scale));
+    int p6 = addpoint(0, set(scale, scale, scale));
+    int p7 = addpoint(0, set(-scale, scale, scale));
+    
+    function int quad(int p0, p1, p2, p3){
+        int prim0 = addprim(0, "poly");
+        int v0 = addvertex(0, prim0, p0);
+        int v1 = addvertex(0, prim0, p1);
+        int v2 = addvertex(0, prim0, p2);
+        int v3 = addvertex(0, prim0, p3);
+        return v0, v1, v2, v3;
+    }
+    
+    quad(p3, p2, p1, p0);
+    quad(p4, p5, p6, p7);
+    quad(p4, p7, p3, p0);
+    quad(p7, p6, p2, p3);
+    quad(p6, p5, p1, p2);
+    quad(p5, p4, p0, p1);
+    
+    return true;
+}
+
+float scale = chf("scale");
+box(scale);
